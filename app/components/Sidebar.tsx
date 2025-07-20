@@ -1,96 +1,113 @@
 'use client'
 
+import { Input } from './ui/Input';
+import { Select } from './ui/Select';
+import { Checkbox } from './ui/Checkbox';
+
 interface SidebarProps {
-  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchTerm: string;
-  setPrice: (price: { min: string; max: string }) => void;
+  onSearchChange: (term: string) => void;
   price: { min: string; max: string };
-  allCategories: string[];
+  onPriceChange: (price: { min: string; max: string }) => void;
   category: string[];
-  setCategory: (category: string) => void;
-  allTags: string[];
+  onCategoryChange: (category: string) => void;
+  allCategories: string[];
   tags: string[];
-  setTags: (tag: string, checked: boolean) => void;
+  onTagsChange: (tag: string, checked: boolean) => void;
+  allTags: string[];
 }
 
 export default function Sidebar({
-  setCategory,
-  handleSearch,
   searchTerm,
-  setPrice,
+  onSearchChange,
   price,
-  allCategories,
+  onPriceChange,
   category,
-  allTags,
+  onCategoryChange,
+  allCategories,
   tags,
-  setTags,
+  onTagsChange,
+  allTags,
 }: SidebarProps) {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearchChange(e.target.value);
+  };
+
+  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onPriceChange({ ...price, min: e.target.value });
+  };
+
+  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onPriceChange({ ...price, max: e.target.value });
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onCategoryChange(e.target.value);
+  };
+
+  const handleTagChange = (tag: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    onTagsChange(tag, e.target.checked);
+  };
+
   return (
-    <aside className="flex flex-col w-96 bg-gray-50 p-6 border-r border-gray-200">
+    <aside className="flex min-w-sm flex-col p-6">
       <div className="mb-6">
-        <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">Search Products</label>
-        <input
+        <Input
+          label="Search Products"
           id="search"
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
           type="search"
           placeholder="Search products..."
           value={searchTerm}
-          onChange={handleSearch}
+          onChange={handleSearchChange}
         />
-        <label htmlFor="minprice" className="block text-sm font-medium text-gray-700 mb-2">Min price</label>
-        <input
+        
+        <Input
+          label="Min price"
           id="minprice"
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
           type="number"
-          max='999'
+          max="999"
           min="0"
           placeholder="Min price"
           value={price.min}
-          onChange={e => setPrice({ ...price, min: e.target.value })}
+          onChange={handleMinPriceChange}
         />
-        <label htmlFor="maxprice" className="block text-sm font-medium text-gray-700 mb-2">Max price</label>
-        <input
+        
+        <Input
+          label="Max price"
           id="maxprice"
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           type="number"
-          max='999'
+          max="999"
           min="0"
           placeholder="Max price"
           value={price.max}
-          onChange={e => setPrice({ ...price, max: e.target.value })}
+          onChange={handleMaxPriceChange}
         />
-        <label htmlFor="categories" className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-        <select
-          name="categories"
+        
+        <Select
+          label="Category"
           id="categories"
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
           value={category[0]}
-          onChange={e => setCategory(e.target.value)}
-        >
-          {allCategories.map(cat => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-        <div className="space-y-2">
-          {allTags.map(tag => (
-            <div key={tag} className="flex items-center gap-2">
-              <input
-                type="checkbox"
+          onChange={handleCategoryChange}
+          options={allCategories.map(cat => ({ value: cat, label: cat }))}
+        />
+        
+        <details>
+          <summary className="cursor-pointer mb-2">
+            Tags:
+          </summary>
+          <div className="space-y-2">
+            {allTags.map(tag => (
+              <Checkbox
+                key={tag}
+                label={tag}
                 id={tag}
-                name={tag}
                 value={tag}
                 checked={tags.includes(tag)}
-                onChange={e => setTags(tag, e.target.checked)}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                onChange={handleTagChange(tag)}
               />
-              <label htmlFor={tag} className="text-gray-700 text-sm cursor-pointer">
-                {tag}
-              </label>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </details>
       </div>
     </aside>
   );
