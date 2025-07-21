@@ -46,7 +46,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
     return (
-        <div className="w-[200px] min-h-[355px] flex flex-col max-h-fit gap-4 bg-blue-200 mb-4 mr-4 p-4 rounded-sm">
+        <div className="w-[200px] min-h-[370px] mx-auto mb-4 md:mr-4 p-4 flex flex-col max-h-fit gap-4 bg-sky-100 rounded-md">
             <Image width={300} height={300} alt={product.title} src={product.thumbnail} />
             <p>
                 {product?.brand}

@@ -50,7 +50,7 @@ export default function Sidebar({
   };
 
   return (
-    <aside className="flex min-w-sm flex-col p-6">
+    <aside className="flex md:min-w-sm flex-col p-6">
       <div className="mb-6">
         <Input
           label="Search Products"

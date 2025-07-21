@@ -3,6 +3,7 @@
 import ProductCard from "./ProductCard";
 import Sidebar from './Sidebar';
 import { useProductFilters } from '../hooks/useProductFilters';
+import { motion } from "motion/react"
 
 export default function ProductCards() {
   const {
@@ -17,8 +18,21 @@ export default function ProductCards() {
     resetFilters
   } = useProductFilters();
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
-    <div className="flex flex-row py-8">
+    <div className="flex flex-col md:flex-row py-8">
       <Sidebar 
         allTags={allTags}
         tags={filters.tags}
@@ -44,13 +58,21 @@ export default function ProductCards() {
         </div>
       )}
       
-      <div className='flex flex-wrap'>
-        {filteredProducts.map((product) => (
-          <ProductCard 
-            key={product.id} 
-            product={{ ...product, brand: product.brand ?? '' }} 
-          />
-        ))}
+      <div className='flex-1'>
+        <motion.div 
+          className="flex flex-wrap"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          {filteredProducts.map((product) => (
+            <motion.div key={product.id} variants={item}>
+              <ProductCard 
+                product={{ ...product, brand: product.brand ?? '' }} 
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );
