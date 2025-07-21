@@ -17,7 +17,7 @@ A modern, responsive ecommerce product filtering application built with Next.js,
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
@@ -81,8 +81,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ![Ecommerce Product Filter App](./public/screenshot.png)
 
-*The ecommerce product filter application showcasing the responsive design with sidebar filters and product grid layout.*
-
 ## 🔧 Customization
 
 The application is built with extensibility in mind:
@@ -90,14 +88,6 @@ The application is built with extensibility in mind:
 - Modular component architecture
 - Reusable UI components
 - Type-safe interfaces
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
