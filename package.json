@@ -1,6 +1,7 @@
 {
-  "name": "my-app",
+  "name": "ecommerce-filter",
   "version": "0.1.0",
+  "author": "Max",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

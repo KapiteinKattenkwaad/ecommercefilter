@@ -1,6 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecommerce Product Filter
 
-## Getting Started
+A modern, responsive ecommerce product filtering application built with Next.js, TypeScript, and Tailwind CSS. Features advanced filtering capabilities with real-time search, price range filtering, category selection, and tag-based filtering.
+
+## 🌟 Features
+
+- **Advanced Product Filtering**: Search by title, filter by price range, category, and tags
+- **Real-time Search**: Instant filtering as you type
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Smooth Animations**: Beautiful stagger animations using Framer Motion
+- **TypeScript**: Fully typed for better development experience
+- **Clean Architecture**: Follows SOLID principles with separated business and presentation logic
+
+## 🚀 Live Demo
+
+**Visit the live website:** [https://ecommercefilter-8de80xcry-maxstoutens-projects.vercel.app/](https://ecommercefilter-8de80xcry-maxstoutens-projects.vercel.app/)
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **State Management**: React Hooks
+- **Architecture**: Custom hooks for business logic separation
+
+## 🏗️ Project Structure
+
+```
+my-app/
+├── app/
+│   ├── components/
+│   │   ├── ui/          
+│   │   ├── ProductCard.tsx
+│   │   ├── ProductCards.tsx
+│   │   └── Sidebar.tsx
+│   ├── hooks/          
+│   │   └── useProductFilters.ts
+│   ├── layout.tsx
+│   └── page.tsx
+├── public/
+│   └── products.json  
+└── README.md
+```
+
+## 🚀 Getting Started
 
 First, run the development server:
 
@@ -16,21 +59,46 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Key Features Explained
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Product Filtering
+- **Search**: Filter products by title in real-time
+- **Price Range**: Set minimum and maximum price filters
+- **Category**: Filter by product categories
+- **Tags**: Multi-select tag filtering with checkboxes
 
-## Learn More
+### Responsive Design
+- Mobile-first approach
+- Adaptive grid layout
+- Collapsible sidebar on mobile devices
 
-To learn more about Next.js, take a look at the following resources:
+### Performance Optimizations
+- Memoized filtering logic
+- Efficient state management
+- Optimized re-renders
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📱 Screenshots
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Ecommerce Product Filter App](./public/screenshot.png)
 
-## Deploy on Vercel
+*The ecommerce product filter application showcasing the responsive design with sidebar filters and product grid layout.*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application is built with extensibility in mind:
+- Easy to add new filter types
+- Modular component architecture
+- Reusable UI components
+- Type-safe interfaces
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ using Next.js and TypeScript
